@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Keeps a GameObject on screen.
+/// Checks if a GameObject is on screen and can force it to stay on screen.
 /// Only works when using an orthographic main camera.
 /// </summary>
 public class BoundsCheck : MonoBehaviour {
@@ -17,10 +17,12 @@ public class BoundsCheck : MonoBehaviour {
     [Header("Inscribed")] 
     public eType boundsType = eType.center;
     public float radius = 1f;
-    
+    public bool keepOnScreen = true;
+        
     [Header("Dynamic")] 
     public float camWidth;
-    public float camHeight; 
+    public float camHeight;
+    public bool isOnScreen = true;
     
     void Awake() {
         camHeight = Camera.main.orthographicSize;
@@ -36,17 +38,28 @@ public class BoundsCheck : MonoBehaviour {
         Vector3 pos = transform.position;
         
         // Restrict X Position to camera width
-        if (pos.x > camWidth + checkRadius)
+        if (pos.x > camWidth + checkRadius) {
             pos.x = camWidth + checkRadius;
-        else if (pos.x < -camWidth - checkRadius)
+            isOnScreen = false;
+        }
+        else if (pos.x < -camWidth - checkRadius) {
             pos.x = -camWidth - checkRadius;
-        
-        // Restrict Y Position to camera width
-        if (pos.y > camHeight + checkRadius)
-            pos.y = camHeight + checkRadius;
-        else if (pos.y < -camHeight - checkRadius)
-            pos.y = -camHeight - checkRadius;
+            isOnScreen = false;
+        }
 
-        transform.position = pos;
+        // Restrict Y Position to camera width
+        if (pos.y > camHeight + checkRadius) {
+            pos.y = camHeight + checkRadius;
+            isOnScreen = false;
+        }
+        else if (pos.y < -camHeight - checkRadius) {
+            pos.y = -camHeight - checkRadius;
+            isOnScreen = false;
+        }
+        
+        if (keepOnScreen && !isOnScreen) {
+            transform.position = pos;
+            isOnScreen = true;
+        }
     }
 }
