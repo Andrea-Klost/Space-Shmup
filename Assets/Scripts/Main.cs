@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,8 @@ public class Main : MonoBehaviour {
     public GameObject[] prefabEnemies; // Array of enemy prefabs
     public float enemySpawnPerSecond = 0.5f; // Enemies spawned per second
     public float enemyInsetDefault = 1.5f; // Inset from sides
-
+    public float gameRestartDelay = 2;
+    
     private BoundsCheck bndCheck;
 
     void Awake() {
@@ -40,5 +42,18 @@ public class Main : MonoBehaviour {
         
         // Invoke again
         Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);
+    }
+
+    void DelayedRestart() {
+        Invoke(nameof(Restart), gameRestartDelay);
+    }
+
+    void Restart() {
+        // Reload scene
+        SceneManager.LoadScene("__Scene_0");
+    }
+
+    static public void HERO_DIED() {
+        S.DelayedRestart();
     }
 }

@@ -67,6 +67,7 @@ public class Hero : MonoBehaviour {
             // If reduced to negative destroy hero
             if (value < 0) {
                 Destroy(this.gameObject);
+                Main.HERO_DIED();   
             }
         }
     }
