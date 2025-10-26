@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundsType: 2
-  radius: 2.5
+  radius: 3
   keepOnScreen: 0
   camWidth: 0
   camHeight: 0
@@ -100,6 +100,11 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 100
+  lifeTime: 10
+  sinEccentricity: 0.6
+  birthTime: 0
+  p0: {x: 0, y: 0, z: 0}
+  p1: {x: 0, y: 0, z: 0}
 --- !u!1001 &8705781302841839033
 PrefabInstance:
   m_ObjectHideFlags: 0
