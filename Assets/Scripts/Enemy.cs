@@ -47,8 +47,11 @@ public class Enemy : MonoBehaviour {
         GameObject otherGo = coll.gameObject;
         // If hit by ProjectileHero destroy projectile and self
         if (otherGo.GetComponent<ProjectileHero>() != null) {
-            Destroy(otherGo);
-            Destroy(gameObject);
+            health--; // Reduce health on hit
+            if (health <= 0) { // If health is 0 destroy
+                Destroy(gameObject);
+            }
+            Destroy(otherGo); // Destroy projectile
         }
         else {
             Debug.Log("Enemy hit by non-ProjectileHero: " + otherGo.name);
