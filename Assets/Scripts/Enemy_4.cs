@@ -6,16 +6,55 @@ using UnityEngine;
 
 [RequireComponent(typeof(EnemyShield))]
 public class Enemy_4 : Enemy {
+    [Header("Enemy_4 Inscribed")]
+    public float duration = 4; // Duration of interpolation movement
+    
     private EnemyShield[] allShields;
     private EnemyShield thisShield;
-
+    private Vector3 p0, p1; // Points to interpolate
+    private float timeStart; // Birthtime
+    
     void Start() {
         allShields = GetComponentsInChildren<EnemyShield>();
         thisShield = GetComponent<EnemyShield>();
+        
+        // Initially place p0 and p1 to current position from Main.SpawnEnemy()
+        p0 = p1 = pos;
+        InitMovement();
     }
 
-    public override void Move() {
+    void InitMovement() {
+        p0 = p1; // Set p0 to old p1
+        // Assign a new on-screen location to p1
+        float widMinRad = bndCheck.camWidth - bndCheck.radius;
+        float hgtMinRad = bndCheck.camHeight - bndCheck.radius;
+        p1.x = UnityEngine.Random.Range(-widMinRad, widMinRad);
+        p1.y = UnityEngine.Random.Range(-hgtMinRad, hgtMinRad);
         
+        // Make sure that it moves to a different quadrant
+        if (p0.x * p1.x > 0 && p0.y * p1.y > 0) {
+            if (Mathf.Abs(p0.x) > Mathf.Abs(p0.y)) {
+                p1.x *= -1;
+            }
+            else {
+                p1.y *= -1;
+            }
+        }
+        
+        // Reset time
+        timeStart = Time.time;
+    }
+    
+    public override void Move() {
+        float u = (Time.time - timeStart) / duration;
+
+        if (u >= 1) {
+            InitMovement();
+            u = 0;
+        }
+
+        u = u - 0.15f * Mathf.Sin(u * 2 * Mathf.PI); // Easing: Sine -0.15
+        pos = (1 - u) * p0 + u * p1; // Simple linear interpolation 
     }
 
     /// <summary>

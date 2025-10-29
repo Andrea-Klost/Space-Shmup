@@ -1169,8 +1169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a677f4f7f1de8141b00a0222691d843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundsType: 2
-  radius: 2.5
+  boundsType: 1
+  radius: 8
   keepOnScreen: 0
   camWidth: 0
   camHeight: 0
@@ -1189,8 +1189,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fireRate: 0.3
-  health: 10
+  health: 0
   score: 100
+  duration: 4
 --- !u!114 &7460301893429373258
 MonoBehaviour:
   m_ObjectHideFlags: 0
