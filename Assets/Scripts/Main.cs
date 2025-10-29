@@ -12,13 +12,15 @@ public class Main : MonoBehaviour {
     public float enemySpawnPerSecond = 0.5f; // Enemies spawned per second
     public float enemyInsetDefault = 1.5f; // Inset from sides
     public float gameRestartDelay = 2;
+    public bool spawnEnemies = true;
     
     private BoundsCheck bndCheck;
 
     void Awake() {
         S = this;
         bndCheck = GetComponent<BoundsCheck>();
-        Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);
+        if (spawnEnemies)
+            Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);
     }
     
     public void SpawnEnemy() { 
