@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour {
     public float health = 10;
     public int score = 100;
 
-    private BoundsCheck bndCheck;
+    protected BoundsCheck bndCheck;
 
     void Awake() {
         bndCheck = GetComponent<BoundsCheck>();
@@ -47,8 +47,11 @@ public class Enemy : MonoBehaviour {
         GameObject otherGo = coll.gameObject;
         // If hit by ProjectileHero destroy projectile and self
         if (otherGo.GetComponent<ProjectileHero>() != null) {
-            Destroy(otherGo);
-            Destroy(gameObject);
+            health--; // Reduce health on hit
+            if (health <= 0) { // If health is 0 destroy
+                Destroy(gameObject);
+            }
+            Destroy(otherGo); // Destroy projectile
         }
         else {
             Debug.Log("Enemy hit by non-ProjectileHero: " + otherGo.name);
