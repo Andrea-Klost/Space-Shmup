@@ -95,6 +95,7 @@ public class Enemy_4 : Enemy {
                 if (thisShield.isActive) return;
                 
                 // Destroy this Enemy_4
+                Main.ENEMY_DESTROYED(this);
                 Destroy(gameObject);
             }
             else {

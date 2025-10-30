@@ -9,6 +9,7 @@ public class Main : MonoBehaviour {
 
     [Header("Inscribed")]
     public GameObject[] prefabEnemies; // Array of enemy prefabs
+    public GameObject prefabPowerUp; // PowerUp prefab
     public float enemySpawnPerSecond = 0.5f; // Enemies spawned per second
     public float enemyInsetDefault = 1.5f; // Inset from sides
     public float gameRestartDelay = 2;
@@ -58,4 +59,13 @@ public class Main : MonoBehaviour {
     static public void HERO_DIED() {
         S.DelayedRestart();
     }
+
+    public static void ENEMY_DESTROYED(Enemy e) {
+        if (Random.value <= e.powerUpSpawnChance) {
+            // Instantiate new PowerUp
+            GameObject go = Instantiate(S.prefabPowerUp);
+            go.transform.position = e.transform.position; // Set PowerUp position to enemy's last position
+        }
+    }
+    
 }

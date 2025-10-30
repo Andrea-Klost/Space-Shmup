@@ -100,6 +100,7 @@ MonoBehaviour:
   fireRate: 0.3
   health: 4
   score: 100
+  powerUpSpawnChance: 0.75
   lifeTime: 5
   midPointYRange: {x: 1.5, y: 3}
   drawDebugInfo: 1

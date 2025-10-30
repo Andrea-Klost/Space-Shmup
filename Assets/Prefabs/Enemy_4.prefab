@@ -1191,6 +1191,7 @@ MonoBehaviour:
   fireRate: 0.3
   health: 0
   score: 100
+  powerUpSpawnChance: 1
   duration: 4
 --- !u!114 &7460301893429373258
 MonoBehaviour:

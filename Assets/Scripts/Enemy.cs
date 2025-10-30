@@ -12,9 +12,10 @@ public class Enemy : MonoBehaviour {
     public float fireRate = 0.3f; // Seconds/Shot
     public float health = 10;
     public int score = 100;
-
+    public float powerUpSpawnChance = 0.25f;
+    
     protected BoundsCheck bndCheck;
-
+    
     void Awake() {
         bndCheck = GetComponent<BoundsCheck>();
     }
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour {
         if (otherGo.GetComponent<ProjectileHero>() != null) {
             health--; // Reduce health on hit
             if (health <= 0) { // If health is 0 destroy
+                Main.ENEMY_DESTROYED(this);
                 Destroy(gameObject);
             }
             Destroy(otherGo); // Destroy projectile

@@ -101,6 +101,7 @@ MonoBehaviour:
   fireRate: 0.3
   health: 3
   score: 100
+  powerUpSpawnChance: 0.5
   lifeTime: 10
   sinEccentricity: 0.6
   rotCurve:
