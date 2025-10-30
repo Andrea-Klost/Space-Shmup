@@ -62,13 +62,19 @@ public class Hero : MonoBehaviour {
         // If hit twice in a row by same source skip damage
         if (go == lastTriggerGo) return;
         lastTriggerGo = go;
-        
+       
         Enemy enemy = go.GetComponent<Enemy>();
+        PowerUp power = go.GetComponent<PowerUp>();
         if (enemy != null) { // If triggered by an enemy decrease shield level and destroy enemy
             shieldLevel--;
             //Destroy(go);
         }
+        else if (power != null) { // If PowerUp increase shield and destroy PowerUp
+            shieldLevel++;
+            Destroy(go);
+        }
         else {
+            
             Debug.LogWarning("Shield triggered by non-Enemy: " + go.name);
         }
     }
