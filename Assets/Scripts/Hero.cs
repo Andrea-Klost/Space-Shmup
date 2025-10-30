@@ -66,7 +66,7 @@ public class Hero : MonoBehaviour {
         Enemy enemy = go.GetComponent<Enemy>();
         if (enemy != null) { // If triggered by an enemy decrease shield level and destroy enemy
             shieldLevel--;
-            Destroy(go);
+            //Destroy(go);
         }
         else {
             Debug.LogWarning("Shield triggered by non-Enemy: " + go.name);
