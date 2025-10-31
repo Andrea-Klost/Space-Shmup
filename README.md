@@ -3,6 +3,11 @@
 This is a modified version of the Space SHMUP project from Chapter 31 of
 "Introduction to Game Design, Prototyping, and Developement." (3e) by Jeremy Gibson Bond.
 
+## Play
+Play online now via [GitHub Pages](https://andrea-klost.github.io/Space-Shmup/),
+or download a build from the [releases](https://github.com/Andrea-Klost/Space-Shmup/releases)
+page.
+
 ## Enhancements
 - Enemies randomly drop a powerup item that increases the player's shield level.
   - Harder enemies have a higher chance of dropping a powerup.
