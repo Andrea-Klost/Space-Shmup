@@ -14,9 +14,11 @@ public class Main : MonoBehaviour {
     public float enemyInsetDefault = 1.5f; // Inset from sides
     public float gameRestartDelay = 2;
     public bool spawnEnemies = true;
+    public Transform playerTransform; // HeroShip
     
     private BoundsCheck bndCheck;
-
+    private bool _heroDied = false;
+    
     void Awake() {
         S = this;
         bndCheck = GetComponent<BoundsCheck>();
@@ -57,6 +59,7 @@ public class Main : MonoBehaviour {
     }
 
     static public void HERO_DIED() {
+        S._heroDied = true;
         S.DelayedRestart();
     }
 
@@ -67,5 +70,10 @@ public class Main : MonoBehaviour {
             go.transform.position = e.transform.position; // Set PowerUp position to enemy's last position
         }
     }
-    
+
+    public static Vector3 GET_HERO_POSITION() {
+        if (S._heroDied) // Avoid null reference during transition after hero dies
+            return Vector3.zero;
+        return S.playerTransform.position;
+    }
 }

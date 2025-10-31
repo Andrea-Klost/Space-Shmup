@@ -560,6 +560,7 @@ MonoBehaviour:
   enemyInsetDefault: 1.5
   gameRestartDelay: 2
   spawnEnemies: 1
+  playerTransform: {fileID: 2061492765}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0

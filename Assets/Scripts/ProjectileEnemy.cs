@@ -11,8 +11,8 @@ public class ProjectileEnemy : MonoBehaviour {
     }
     
     void Update() {
-        // Remove if off the bottom of the screen
-        if (bndCheck.LocIs(BoundsCheck.eScreenLocs.offDown)) {
+        // Remove if offscreen
+        if (!bndCheck.LocIs(BoundsCheck.eScreenLocs.onScreen)) {
             Destroy(gameObject);
         }
     }

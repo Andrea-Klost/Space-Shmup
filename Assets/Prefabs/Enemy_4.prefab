@@ -1104,6 +1104,7 @@ GameObject:
   - component: {fileID: -785789444529355198}
   - component: {fileID: 7460301893429373258}
   - component: {fileID: 496923931374769237}
+  - component: {fileID: 3713584628682014847}
   m_Layer: 9
   m_Name: Enemy_4
   m_TagString: Untagged
@@ -1221,3 +1222,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+--- !u!114 &3713584628682014847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185519998980853174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4ce33c1be37a8488869c356920b5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTimeBetweenShots: 4
+  maxTimeBetweenShots: 6
+  projectileSpeed: 20
+  shootTowardsPlayer: 1
+  prefabProjectile: {fileID: 617094894584821777, guid: 32db347033755ac4c91d9f2ab500eb61, type: 3}
