@@ -1234,8 +1234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd4ce33c1be37a8488869c356920b5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTimeBetweenShots: 4
-  maxTimeBetweenShots: 6
+  timeBeforeFirstShot: 5
+  timeBetweenShots: 5
   projectileSpeed: 20
   shootTowardsPlayer: 1
   prefabProjectile: {fileID: 617094894584821777, guid: 32db347033755ac4c91d9f2ab500eb61, type: 3}

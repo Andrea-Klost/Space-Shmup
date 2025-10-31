@@ -9,15 +9,15 @@ using Random = System.Random;
 /// </summary>
 public class EnemyShooting : MonoBehaviour {
     [Header("Inscribed")] 
-    public float minTimeBetweenShots = 0.25f;
-    public float maxTimeBetweenShots = 1f;
+    public float timeBeforeFirstShot = 0.25f;
+    public float timeBetweenShots = 1f;
     public float projectileSpeed = 40f;
     public bool shootTowardsPlayer = false;
     public GameObject prefabProjectile;
 
     void Start() {
         // Start shooting after min to compensate for time it takes to get on screen
-        Invoke(nameof(Fire), minTimeBetweenShots); 
+        Invoke(nameof(Fire), timeBeforeFirstShot); 
     }
 
     void Fire() { 
@@ -29,7 +29,7 @@ public class EnemyShooting : MonoBehaviour {
             (Main.GET_HERO_POSITION() - transform.position).normalized * projectileSpeed 
             :  Vector3.down * projectileSpeed;
         
-        Invoke(nameof(Fire), UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots));
+        Invoke(nameof(Fire), timeBetweenShots);
     }
 
 }
