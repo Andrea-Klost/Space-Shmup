@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5468820815898550114}
   - component: {fileID: -7969168035153124560}
   - component: {fileID: 4927697097994847091}
+  - component: {fileID: -8454057786750607129}
   m_Layer: 9
   m_Name: Enemy_3
   m_TagString: Untagged
@@ -103,7 +104,7 @@ MonoBehaviour:
   powerUpSpawnChance: 0.75
   lifeTime: 5
   midPointYRange: {x: 1.5, y: 3}
-  drawDebugInfo: 1
+  drawDebugInfo: 0
   points: []
   birthTime: 0
 --- !u!114 &4927697097994847091
@@ -121,6 +122,22 @@ MonoBehaviour:
   showingColor: 0
   blinkCompleteTime: 0
   ignoreOnCollisionEnter: 0
+--- !u!114 &-8454057786750607129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217192625371338093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4ce33c1be37a8488869c356920b5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTimeBetweenShots: 2
+  maxTimeBetweenShots: 2
+  projectileSpeed: 20
+  prefabProjectile: {fileID: 617094894584821777, guid: 32db347033755ac4c91d9f2ab500eb61, type: 3}
 --- !u!1001 &6217192625199160741
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -9074134684420861552}
   - component: {fileID: -769493083338269524}
   - component: {fileID: -5176910118428106325}
+  - component: {fileID: -521782444133917034}
   m_Layer: 9
   m_Name: Enemy_1
   m_TagString: Untagged
@@ -86,6 +87,7 @@ MonoBehaviour:
   fireRate: 0.3
   health: 4
   score: 100
+  powerUpSpawnChance: 0.25
   waveFrequency: 2
   waveWidth: 4
   waveRotY: 45
@@ -104,6 +106,22 @@ MonoBehaviour:
   showingColor: 0
   blinkCompleteTime: 0
   ignoreOnCollisionEnter: 0
+--- !u!114 &-521782444133917034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3319825933102930435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4ce33c1be37a8488869c356920b5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTimeBetweenShots: 2
+  maxTimeBetweenShots: 2
+  projectileSpeed: 20
+  prefabProjectile: {fileID: 617094894584821777, guid: 32db347033755ac4c91d9f2ab500eb61, type: 3}
 --- !u!1001 &5065028546169738789
 PrefabInstance:
   m_ObjectHideFlags: 0
