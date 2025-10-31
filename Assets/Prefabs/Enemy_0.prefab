@@ -100,7 +100,7 @@ MonoBehaviour:
   speed: 10
   fireRate: 0.3
   health: 5
-  score: 100
+  score: 50
   powerUpSpawnChance: 0.25
 --- !u!114 &2817065137544580095
 MonoBehaviour:
