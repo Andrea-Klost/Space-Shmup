@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Main : MonoBehaviour {
     private static Main S;
@@ -16,11 +17,18 @@ public class Main : MonoBehaviour {
     public Transform playerTransform; // HeroShip
     
     private BoundsCheck bndCheck;
-    private bool _heroDied = false;
+    private bool _heroDied;
+    private int _score;
+    private int _highScore;
+    private List<ScoreUI> _scoreSubscribers;
     
     void Awake() {
         S = this;
         bndCheck = GetComponent<BoundsCheck>();
+        _heroDied = false;
+        _score = 0;
+        _highScore = PlayerPrefs.GetInt("HighScore");
+        _scoreSubscribers = new List<ScoreUI>();
         if (spawnEnemies)
             Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);
     }
@@ -63,6 +71,12 @@ public class Main : MonoBehaviour {
     }
 
     public static void ENEMY_DESTROYED(Enemy e) {
+        S._score += e.score; // Add enemies point value to score
+        if (S._score > S._highScore) { // If new score beats high score, update high score
+            S._highScore = S._score;
+            PlayerPrefs.SetInt("HighScore", S._highScore);   
+        }
+        S.SignalScoreSubscribers();
         if (Random.value <= e.powerUpSpawnChance) {
             // Instantiate new PowerUp
             GameObject go = Instantiate(S.prefabPowerUp);
@@ -74,5 +88,24 @@ public class Main : MonoBehaviour {
         if (S._heroDied) // Avoid null reference during transition after hero dies
             return Vector3.zero;
         return S.playerTransform.position;
+    }
+
+    public static int GET_SCORE() {
+        return S._score;
+    }
+    
+    public static int GET_HIGH_SCORE() {
+        return S._highScore;
+    }
+    
+    public static void SUBSCRIBE_TO_SCORE(ScoreUI subscriber) {
+        S._scoreSubscribers.Add(subscriber);
+    }
+
+    void SignalScoreSubscribers() {
+        foreach(ScoreUI s in _scoreSubscribers) {
+            s.UpdateScore();
+            s.UpdateHighScore();
+        }
     }
 }
