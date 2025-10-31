@@ -64,10 +64,15 @@ public class Hero : MonoBehaviour {
         lastTriggerGo = go;
        
         Enemy enemy = go.GetComponent<Enemy>();
+        ProjectileEnemy proj = go.GetComponent<ProjectileEnemy>();
         PowerUp power = go.GetComponent<PowerUp>();
         if (enemy != null) { // If triggered by an enemy decrease shield level and destroy enemy
             shieldLevel--;
             //Destroy(go);
+        }
+        else if (proj != null) { // If triggered by an enemy projectile reduce shield and destroy projectile
+            shieldLevel--;
+            Destroy(go);
         }
         else if (power != null) { // If PowerUp increase shield and destroy PowerUp
             shieldLevel++;
