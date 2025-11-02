@@ -13,6 +13,7 @@ entire screen.
 
 ## Controls
 WASD/Arrows - Move
+
 Space - Shoot
 
 ## Enhancements
