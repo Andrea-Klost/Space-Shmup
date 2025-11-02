@@ -8,7 +8,7 @@ Play online now via [GitHub Pages](https://andrea-klost.github.io/Space-Shmup/),
 or download a build from the [releases](https://github.com/Andrea-Klost/Space-Shmup/releases)
 page.
 
-Note: If played via the Github Pages link, you may need to adjust your browsers zoom to see the
+Note: If played via the Github Pages link, you may need to adjust your browser's zoom to see the
 entire screen.
 
 ## Controls
