@@ -8,6 +8,13 @@ Play online now via [GitHub Pages](https://andrea-klost.github.io/Space-Shmup/),
 or download a build from the [releases](https://github.com/Andrea-Klost/Space-Shmup/releases)
 page.
 
+Note: If played via the Github Pages link, you may need to adjust your browsers zoom to see the
+entire screen.
+
+## Controls
+WASD/Arrows - Move
+Space - Shoot
+
 ## Enhancements
 - Enemies randomly drop a powerup item that increases the player's shield level.
   - Harder enemies have a higher chance of dropping a powerup.
